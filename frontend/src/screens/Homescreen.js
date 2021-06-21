@@ -6,7 +6,9 @@ import Product from '../components/Product';
 const Homescreen = () => {
   return (
     <>
-      <h1>Latest Products</h1>
+      <h1 className='d-flex flex-column justify-content-center align-items-center'>
+        Latest Products
+      </h1>
       <Row>
         {products.map((product) => (
           <Col sm={12} md={6} lg={4} xml={3}>
