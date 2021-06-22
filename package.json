@@ -1,0 +1,40 @@
+{
+  "name": "shopmantra",
+  "version": "1.0.0",
+  "description": "MERN stack app",
+  "main": "server.js",
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "csstype": "^3.0.8",
+    "express": "^4.17.1",
+    "invariant": "^2.2.4",
+    "js-tokens": "^4.0.0",
+    "loose-envify": "^1.4.0",
+    "nodemon": "^2.0.7",
+    "object-assign": "^4.1.1",
+    "prop-types": "^15.7.2",
+    "prop-types-extra": "^1.1.1",
+    "react": "^17.0.2",
+    "react-is": "^16.13.1",
+    "react-lifecycles-compat": "^3.0.4",
+    "regenerator-runtime": "^0.13.7",
+    "scheduler": "^0.20.2",
+    "uncontrollable": "^7.2.1",
+    "warning": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monish259/ShopMantra.git"
+  },
+  "author": "Monish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monish259/ShopMantra/issues"
+  },
+  "homepage": "https://github.com/Monish259/ShopMantra#readme"
+}

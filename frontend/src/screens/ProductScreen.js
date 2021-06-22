@@ -14,7 +14,12 @@ const ProductScreen = ({ match }) => {
       </Link>
       <Row>
         <Col md={6}>
-          <Image src={product.image} alt={product.name} fluid />
+          <Image
+            className='rounded'
+            src={product.image}
+            alt={product.name}
+            fluid
+          />
         </Col>
         <Col md={3}>
           <ListGroup variant='flush'>
@@ -31,7 +36,7 @@ const ProductScreen = ({ match }) => {
           </ListGroup>
         </Col>
         <Col md={3}>
-          <Card>
+          <Card className='rounded'>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <Row>
@@ -52,7 +57,7 @@ const ProductScreen = ({ match }) => {
               <ListGroup.Item>
                 <Row>
                   <Button
-                    className='btn-block'
+                    className='btn-block rounded'
                     type='button'
                     disabled={product.countInStock === 0}
                   >
