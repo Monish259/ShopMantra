@@ -1,6 +1,9 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import products from './data/products.js'; //need to add .js if importing files in node using ES syntax
 const app = express();
-const products = require('./data/products');
+
+dotenv.config();
 
 app.get('/', (req, res) => {
   res.send('app is running on port 5000');
@@ -15,4 +18,10 @@ app.get('/api/products/:id', (req, res) => {
   res.json(product);
 });
 
-app.listen(5000, () => console.log('server is listening to port 5000'));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () =>
+  console.log(
+    `connected to ${process.env.NODE_ENV} server and listening to port ${process.env.PORT}`
+  )
+);

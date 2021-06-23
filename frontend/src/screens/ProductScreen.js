@@ -1,11 +1,21 @@
-import React from 'react';
-import products from '../products';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Button, Image } from 'react-bootstrap';
 import Rating from '../components/Rating';
+import axios from 'axios';
 
 const ProductScreen = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
+  const [product, setProduct] = useState({}); //product will be a object in this case
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { err, data } = await axios.get(`/api/products/${match.params.id}`);
+      if (err) console.log(err);
+      else setProduct(data); //will set product state to data
+    };
+
+    fetchProduct();
+  }, [match]); //passed match as dependency -> on change of this parameter useEffect will automatically run
 
   return (
     <>
