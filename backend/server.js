@@ -1,22 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import products from './data/products.js'; //need to add .js if importing files in node using ES syntax
+import connectDB from './config/db.js';
+import productRoutes from './routes/productRoutes.js'; //need to add .js if importing files in node using ES syntax
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 const app = express();
 
 dotenv.config();
 
-app.get('/', (req, res) => {
-  res.send('app is running on port 5000');
-});
+connectDB();
 
-app.get('/api/products', (req, res) => {
-  res.json(products);
-});
-
-app.get('/api/products/:id', (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
+app.use('/api/products', productRoutes); //any request to /api/products will go to productRoutes and check api defined
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
