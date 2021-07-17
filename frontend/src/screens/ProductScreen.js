@@ -8,7 +8,6 @@ import {
   Button,
   Image,
   Form,
-  Carousel,
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +24,7 @@ const ProductScreen = ({ match, history }) => {
 
   useEffect(() => {
     dispatch(productListDetails(match.params.id));
-  }, [dispatch]);
+  }, [dispatch, match]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`); //passing query paramter qty in cart URL

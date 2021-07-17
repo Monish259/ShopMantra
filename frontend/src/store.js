@@ -6,6 +6,7 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
+import { userLoginReducer } from './reducers/userReducers';
 // createStore -> create store for storing actions and reducers
 // combineReducers -> multple reducers are combined to pass in store func
 // applyMiddleware -> used to include any middleware required
@@ -14,13 +15,19 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  userLogin: userLoginReducer,
 }); //will hold all reducers created for app in state (this is global state for app)
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
+
+const userInfoFromStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null;
 const initialState = {
   cart: { cartItems: cartItemsFromStorage }, //setting cart reducer state , cartItems array setitng to cartItemsFromStorage
+  userLogin: { userInfo: userInfoFromStorage },
 };
 const middleware = [thunk];
 const store = createStore(
