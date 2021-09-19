@@ -28,7 +28,7 @@ const authUser = asyncHandler(async (req, res) => {
 //  @route      GET /api/users/profile
 //  @access     private
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id); //user is set in req in protect middleware
   if (user) {
     res.json({
       _id: user.id,
@@ -76,4 +76,34 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, getUserProfile, registerUser };
+//  @desc       update user
+//  @route      PUT /api/users/profile
+//  @access     private
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id); // finding user in db using user object from req which is saved in protect route
+
+  if (user) {
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.password) user.password = req.body.password;
+
+    try {
+      const updatedUser = await user.save();
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: updatedUser.token,
+      });
+    } catch (error) {
+      res.status(400);
+      throw new Error('Failed to update the user !!');
+    }
+  } else {
+    res.status(404);
+    throw new Error('User Not Found !!');
+  }
+});
+
+export { authUser, getUserProfile, registerUser, updateUserProfile };

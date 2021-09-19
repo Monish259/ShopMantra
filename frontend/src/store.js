@@ -6,7 +6,12 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
-import { userLoginReducer } from './reducers/userReducers';
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateReducer,
+} from './reducers/userReducers';
 // createStore -> create store for storing actions and reducers
 // combineReducers -> multple reducers are combined to pass in store func
 // applyMiddleware -> used to include any middleware required
@@ -16,7 +21,20 @@ const reducer = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdate: userUpdateReducer,
 }); //will hold all reducers created for app in state (this is global state for app)
+
+// const rootReducer = (state, action) => {
+//   // when a logout action is dispatched it will reset redux state
+//   console.log(action.type);
+//   if (action.type === 'USER_LOGOUT') {
+//     state.userDetails = undefined;
+//   }
+
+//   return reducer(state, action);
+// };
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))

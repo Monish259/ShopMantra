@@ -7,6 +7,8 @@ import Homescreen from './screens/Homescreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
 // ? in end of a path mdepicts that parameter is not mandatory for this path
 const App = () => {
   // ? in path means that mentioned parameter may or may not be present in URL for e.g :id in /cart path
@@ -20,6 +22,8 @@ const App = () => {
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/cart/:id?' component={CartScreen} />
           <Route path='/login' component={LoginScreen} />
+          <Route path='/register' component={RegisterScreen} />
+          <Route path='/profile' component={ProfileScreen} />
         </Container>
       </main>
 
